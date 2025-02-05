@@ -216,7 +216,7 @@ def test_trim_edge_cases_negative(input_text, expected_output):
 def test_trim_invalid_input_negative(input_text):
     strings = StringUtils()
     with pytest.raises(AttributeError):
-        strings.capitilize(input_text)
+        strings.trim(input_text)
 
 @pytest.mark.parametrize(
     "input_text, delimiter, expected_output",
