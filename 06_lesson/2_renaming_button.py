@@ -13,8 +13,7 @@ driver.maximize_window()
 driver.get("http://uitestingplayground.com/textinput")
 
 # указание текста в поле ввода
-element = driver.find_element(By.CSS_SELECTOR, "#newButtonName")
-element.send_keys("SkyPro")
+driver.find_element(By.CSS_SELECTOR, "#newButtonName").send_keys("SkyPro")
 
 # нажатие на синюю кнопку
 driver.find_element(By.CSS_SELECTOR, "#updatingButton").click()
@@ -25,10 +24,7 @@ waiter.until(
     EC.text_to_be_present_in_element((By.CSS_SELECTOR, "#updatingButton"), "SkyPro")
     )
 
-# получение (нового) текста кнопки
-UB_txt = driver.find_element(By.CSS_SELECTOR, "#updatingButton").text
-
-# вывод в консоль нового текста кнопки
-print(UB_txt)
+# получение (нового) текста кнопки и вывод его в консоль
+print(driver.find_element(By.CSS_SELECTOR, "#updatingButton").text)
 
 driver.quit()
