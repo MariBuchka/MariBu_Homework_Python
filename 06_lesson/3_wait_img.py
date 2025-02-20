@@ -22,7 +22,7 @@ waiter.until(
 atribut_src = driver.find_element(
     By.CSS_SELECTOR, 'img[id="award"]').get_attribute("src")
 
-# вывод в консоль нового текста кнопки
+# вывод в консоль значения атрибута src
 print(atribut_src)
 
 driver.quit()
