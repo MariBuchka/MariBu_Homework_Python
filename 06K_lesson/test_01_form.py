@@ -34,6 +34,7 @@ class User:
         for field_name, value in fields.items():
             driver.find_element(By.NAME, field_name).send_keys(value)
 
+
 # инициализация и завершение работы драйвера
 @pytest.fixture
 def driver():
@@ -41,6 +42,7 @@ def driver():
     driver.maximize_window()
     yield driver
     driver.quit()
+
 
 # проверка заполнения полей
 def test_form_filling(driver):
@@ -63,10 +65,20 @@ def test_form_filling(driver):
     )
 
     # проверка, что поле Zip code подсвечено красным
-    zip_code_alert = driver.find_element(By.CSS_SELECTOR, "#zip-code")
+    zip_code_alert = driver.find_element(By.ID, "zip-code")
     assert "alert-danger" in zip_code_alert.get_attribute("class"), "Поле Zip code не подсвечено красным"
 
     # проверка, что остальные поля подсвечены зеленым
-    success_alerts = driver.find_elements(By.CSS_SELECTOR, "div.alert.py-2.alert-success")
-    for alert in success_alerts:
-        assert "alert-success" in alert.get_attribute("class"), "Не все поля подсвечены зеленым"
+    #success_alerts = driver.find_elements(By.CSS_SELECTOR, "div.alert.py-2.alert-success")
+    #for alert in success_alerts:
+    #    assert "alert-success" in alert.get_attribute("class"), "Не все поля подсвечены зеленым"
+    fields_to_check = [
+        "first-name", "last-name", "address", "e-mail", "phone",
+        "city", "country", "job-position", "company"
+    ]
+
+    for field_id in fields_to_check:
+        field = driver.find_element(By.ID, field_id)
+        assert "alert-success" in field.get_attribute("class"), (
+            f"Поле {field_id} не подсвечено зеленым"
+        )

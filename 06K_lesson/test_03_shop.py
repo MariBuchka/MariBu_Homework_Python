@@ -2,6 +2,7 @@ import pytest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
+
 # данные для авторизации
 username = 'standard_user'
 password = 'secret_sauce' # взят с сайта вручную
@@ -14,6 +15,7 @@ postal_code = '12345'
 # ожидаемая итоговая сумма
 expected_total = '$58.29'
 
+
 @pytest.fixture
 def driver():
     driver = webdriver.Chrome()
@@ -21,6 +23,7 @@ def driver():
     driver.implicitly_wait(10)
     yield driver
     driver.quit()
+
 
 def test_saucedemo_checkout(driver):
     # открытие страницы магазинна
