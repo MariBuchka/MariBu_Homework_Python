@@ -3,7 +3,7 @@ from CreateProject import CreateProject
 
 @pytest.fixture
 def create_project():
-    return CreateProject("https://yougile.com/api-v2/", "wP-wVV2Hl9ngTUueTwKlYen03kczRfsjaWX3+pC+dkO9bpboZOB9nKFR0jmf4EC5")
+    return CreateProject("https://yougile.com/api-v2/", "")
 
 
 def test_create_project_success(create_project):
