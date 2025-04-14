@@ -1,6 +1,6 @@
 from sqlalchemy import create_engine, inspect, text
 
-db_connection_string = "postgresql://postgres:1995@localhost:5432/QA"
+db_connection_string = ""
 db = create_engine(db_connection_string)
 
 
